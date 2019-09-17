@@ -9,6 +9,8 @@ const tasksListDone = [];
 const tasksDoneNumber = document.querySelector('span.tasksDoneNumber');
 const ulTasksDone = document.querySelector("ul.tasksDone");
 
+const btnClear = document.querySelector('button.clear-all');
+
 
 const removeTask = (e) => {
   const index = e.target.parentNode.dataset.key;
@@ -27,19 +29,22 @@ const moveTask = (e) => {
   const index = e.target.parentNode.dataset.key;
   const taskDoneTab = tasksList.splice(index, 1);
   let taskDone = taskDoneTab[0];
-  console.log(taskDone);
   taskDone.removeChild(taskDone.lastChild);
+  taskDone.removeChild(taskDone.lastChild);
+  const btnDone = document.createElement(`button`);
+  btnDone.classList.add('remove-done');
+  btnDone.textContent = "usuń";
+  taskDone.appendChild(btnDone);
   tasksListDone.push(taskDone);
   render2()
   render()
-  taskDone.querySelector('button.delete').addEventListener('click', removeDone)
+  btnDone.addEventListener('click', removeDone)
 }
 
 const addTask = (e) => {
   e.preventDefault();
   const titleTask = inputWrite.value;
   if (titleTask === "") return;
-  console.log(titleTask);
   const task = document.createElement("li");
   task.classList.add('task');
   task.innerHTML = titleTask + `<button class="delete">usuń</button>` + `<button class="done">zrobione</button>`;
@@ -67,4 +72,28 @@ const render2 = () => {
   })
 }
 
+const clear = (e) => {
+  clearTasks(e)
+  clearDone(e)
+}
+
+const clearTasks = (e) => {
+  e.preventDefault();
+  ulTasks.textContent = "";
+  tasksList.splice(0, tasksList.length);
+  taskNumber.textContent = "";
+}
+const clearDone = (e) => {
+  e.preventDefault();
+  ulTasksDone.textContent = "";
+  tasksListDone.splice(0, tasksListDone.length);
+  tasksDoneNumber.textContent = "";
+}
+
 form.addEventListener('submit', addTask)
+
+btnClear.addEventListener('click', clear)
+
+document.querySelector('button.clear-tasks').addEventListener('click', clearTasks)
+
+document.querySelector('button.clear-done').addEventListener('click', clearDone)
