@@ -10,26 +10,29 @@ const tasksDoneNumber = document.querySelector('span.tasksDoneNumber');
 const ulTasksDone = document.querySelector("ul.tasksDone");
 
 
-
-
 const removeTask = (e) => {
   const index = e.target.parentNode.dataset.key;
   tasksList.splice(index, 1);
   render()
 
 }
+const removeDone = (e) => {
+  const index = e.target.parentNode.dataset.key;
+  tasksListDone.splice(index, 1);
+  ulTasksDone.textContent = "";
+  render2()
+}
 
 const moveTask = (e) => {
   const index = e.target.parentNode.dataset.key;
   const taskDoneTab = tasksList.splice(index, 1);
-  const taskDone = taskDoneTab[0]
+  let taskDone = taskDoneTab[0];
+  console.log(taskDone);
+  taskDone.removeChild(taskDone.lastChild);
   tasksListDone.push(taskDone);
-  tasksDoneNumber.textContent = `(${tasksListDone.length})`;
-  tasksListDone.forEach((item, index) => {
-    item.dataset.key = index;
-    ulTasksDone.appendChild(item)
-  })
+  render2()
   render()
+  taskDone.querySelector('button.delete').addEventListener('click', removeDone)
 }
 
 const addTask = (e) => {
@@ -55,4 +58,13 @@ const render = () => {
     ulTasks.appendChild(task);
   })
 }
+
+const render2 = () => {
+  tasksDoneNumber.textContent = `(${tasksListDone.length})`;
+  tasksListDone.forEach((item, index) => {
+    item.dataset.key = index;
+    ulTasksDone.appendChild(item)
+  })
+}
+
 form.addEventListener('submit', addTask)
