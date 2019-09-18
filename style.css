@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
 body {
   font-family: arial;
 }
@@ -65,19 +69,24 @@ div.done {
 
 input {
   margin: 0 15px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 button {
   text-transform: uppercase;
   padding: 5px;
-  background-color: rgba(240, 240, 240, 0);
+  background-color: rgba(125, 125, 125, 1);
   border: 1px solid black;
 }
 
 .clear-tasks,
 .clear-done {
   margin: 10px auto;
+}
+
+.clear-all,
+.add {
+  margin-left: 30px;
 }
 
 p {

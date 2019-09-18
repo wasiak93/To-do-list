@@ -2,7 +2,7 @@ const inputAdd = document.querySelector('input.write');
 const form = document.querySelector('form');
 const inputWrite = document.querySelector('input.write');
 const ulTasks = document.querySelector("ul.tasks");
-const tasksList = [];
+let tasksList = [];
 const taskNumber = document.querySelector('span.tasksNumber');
 
 const tasksListDone = [];
@@ -10,6 +10,12 @@ const tasksDoneNumber = document.querySelector('span.tasksDoneNumber');
 const ulTasksDone = document.querySelector("ul.tasksDone");
 
 const btnClear = document.querySelector('button.clear-all');
+const btnClearTasks = document.querySelector('button.clear-tasks');
+const btnClearDone = document.querySelector('button.clear-done')
+
+const inputSearch = document.querySelector('input.search');
+let searchList = "";
+let searchText = "";
 
 
 const removeTask = (e) => {
@@ -90,10 +96,24 @@ const clearDone = (e) => {
   tasksDoneNumber.textContent = "";
 }
 
+const searchTask = (e) => {
+  searchText = e.target.value.toLowerCase();
+  searchList = tasksList;
+  searchList = searchList.filter(task => task.textContent.toLowerCase().includes(searchText));
+  ulTasks.textContent = "";
+  searchList.forEach(task => ulTasks.appendChild(task));
+  taskNumber.textContent = `(${searchList.length})`;
+  searchText = e.target.value;
+  console.log(e.target.value)
+}
+
+
 form.addEventListener('submit', addTask)
 
 btnClear.addEventListener('click', clear)
 
-document.querySelector('button.clear-tasks').addEventListener('click', clearTasks)
+btnClearTasks.addEventListener('click', clearTasks)
 
-document.querySelector('button.clear-done').addEventListener('click', clearDone)
+btnClearDone.addEventListener('click', clearDone)
+
+inputSearch.addEventListener('input', searchTask)
