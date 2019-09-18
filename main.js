@@ -22,6 +22,8 @@ const removeTask = (e) => {
   const index = e.target.parentNode.dataset.key;
   tasksList.splice(index, 1);
   render()
+  inputSearch.value = "";
+
 
 }
 const removeDone = (e) => {
@@ -29,6 +31,7 @@ const removeDone = (e) => {
   tasksListDone.splice(index, 1);
   ulTasksDone.textContent = "";
   render2()
+  inputSearch.value = "";
 }
 
 const moveTask = (e) => {
@@ -45,6 +48,7 @@ const moveTask = (e) => {
   render2()
   render()
   btnDone.addEventListener('click', removeDone)
+  inputSearch.value = "";
 }
 
 const addTask = (e) => {
@@ -59,6 +63,7 @@ const addTask = (e) => {
   render()
   task.querySelector('button.delete').addEventListener('click', removeTask);
   task.querySelector('button.done').addEventListener('click', moveTask)
+
 }
 
 const render = () => {
@@ -106,7 +111,9 @@ const searchTask = (e) => {
   searchText = e.target.value;
   console.log(e.target.value)
 }
-
+const clearSearch = () => {
+  inputSearch.value = "";
+};
 
 form.addEventListener('submit', addTask)
 
@@ -117,3 +124,7 @@ btnClearTasks.addEventListener('click', clearTasks)
 btnClearDone.addEventListener('click', clearDone)
 
 inputSearch.addEventListener('input', searchTask)
+
+document.querySelectorAll('button').forEach((button) => {
+  button.addEventListener('click', clearSearch)
+})
