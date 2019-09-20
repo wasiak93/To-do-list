@@ -109,7 +109,6 @@ const searchTask = (e) => {
   searchList.forEach(task => ulTasks.appendChild(task));
   taskNumber.textContent = `(${searchList.length})`;
   searchText = e.target.value;
-  console.log(e.target.value)
 }
 const clearSearch = () => {
   inputSearch.value = "";
