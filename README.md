@@ -1,3 +1,3 @@
-﻿# To do list- PROJECT IN PROGRESS
+﻿# To do list
 
 ## first repo in GitHub
