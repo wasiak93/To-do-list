@@ -113,7 +113,9 @@ ul {
     "data data"
     "lists lists";
   width: 100%;
+  max-width: 1000px;
   height: 100%;
+  margin: auto;
   background: purple;
 }
 
