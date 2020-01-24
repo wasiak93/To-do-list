@@ -120,6 +120,7 @@ form {
   margin-top: 20px;
 }
 
+
 .to-do,
 .tasks-done {
   display: flex;
@@ -161,4 +162,16 @@ li {
 
 .done {
   margin-right: 10px;
+}
+
+@media (min-width: 840px) {
+  .lists {
+    flex-direction: row;
+  }
+
+  .to-do,
+  .tasks-done {
+    width: 100%;
+    justify-content: start;
+  }
 }
