@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Co trzeba zrobic</title>
+  <title>To do list</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,21 +18,32 @@
         <button class="clear-all">Clear all</button>
       </form>
       <div class="modificate">
-        <input class="search" type="text" placeholder="search task">
+        <input class="search" type="text" placeholder="search task to do">
 
       </div>
     </div>
     <div class="lists">
       <div class="to-do">
-        <button class="clear-tasks">clear tasks to do</button>
-        <p>Tasks to do<span class="tasksNumber"></span>:</p>
-        <ul class="tasks"></ul>
-      </div>
-      <div class="done">
+        <div class="head">
+          <p>Tasks to do <span class="tasksNumber"></span></p>
+          <button class="clear-tasks clear-tasks">clear tasks to do</button>
+        </div>
 
-        <button class="clear-done">clear done tasks</button>
-        <p>Done tasks<span class="tasksDoneNumber"></span>:</p>
+
+        <ul class="tasks"></ul>
+
+
+      </div>
+      <div class="tasks-done">
+        <div class="head">
+          <p>Done tasks <span class="tasksDoneNumber"></span></p>
+          <button class="clear-done clear-tasks">clear done tasks</button>
+
+        </div>
+
         <ul class="tasksDone"></ul>
+
+
       </div>
     </div>
   </div>

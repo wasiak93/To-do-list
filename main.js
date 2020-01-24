@@ -36,13 +36,14 @@ const removeDone = (e) => {
 
 const moveTask = (e) => {
   const index = e.target.parentNode.dataset.key;
+
   const taskDoneTab = tasksList.splice(index, 1);
   let taskDone = taskDoneTab[0];
-  taskDone.removeChild(taskDone.lastChild);
-  taskDone.removeChild(taskDone.lastChild);
+  taskDone.removeChild(taskDone.firstChild);
+  taskDone.removeChild(taskDone.firstChild);
   const btnDone = document.createElement(`button`);
   btnDone.classList.add('remove-done');
-  btnDone.textContent = "usuń";
+  btnDone.textContent = "remove";
   taskDone.appendChild(btnDone);
   tasksListDone.push(taskDone);
   render2()
@@ -57,7 +58,7 @@ const addTask = (e) => {
   if (titleTask === "") return;
   const task = document.createElement("li");
   task.classList.add('task');
-  task.innerHTML = titleTask + `<button class="delete">usuń</button>` + `<button class="done">zrobione</button>`;
+  task.innerHTML = `<button class="delete">remove</button>` + `<button class="done">done</button>` + titleTask;
   tasksList.push(task)
   inputWrite.value = "";
   render()
